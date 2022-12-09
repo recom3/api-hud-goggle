@@ -3,7 +3,7 @@
 /**
  * Model for trip.
  *
- * This file hold the trip object.
+ * This file hold the trip class.
  *
  * @version 1.0
  * @author recom3

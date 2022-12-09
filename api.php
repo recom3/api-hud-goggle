@@ -17,6 +17,17 @@ DB::init($dbOptions);
 // Execute the router with our list of routes.
 if(!router($routes))
 {
+    $headers = getRequestHeaders();
+
+    if(array_key_exists("Authorization", $headers))
+    {
+        $token = str_replace("Bearer ","", $headers["Authorization"]);
+    }
+    else
+    {
+        $token = "";
+    }
+	
     $path = $_SERVER['PATH_INFO'];
 
     if($path=='/login')
