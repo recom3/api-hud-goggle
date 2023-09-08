@@ -104,22 +104,124 @@ if(!router($routes))
             exit;
         }		
 	}
+    else if (
+        //This is used from mobile app
+        $path=='/token'
+        //This is from windows app
+        || $path=='/me'
+        )
+    {
+        if($path=='/token')
+        {
+            $jsonString = file_get_contents("php://input");
+            $queries = array();
+            parse_str($jsonString, $queries);
+            $userId = validateCode($queries["code"]);
+        }
+        else
+        {
+            $userId = validateToken();
+        }
+		
+        $userData = new UserData();
+        $userData->User = new UserClass();
+        $userData->UserProfile = new UserProfileClass();
+
+        $userData->token_type = "jwt";
+        $userData->access_token = "<<to be replaced ahead>>";
+
+        $minExpiresTime = 3600 * 24 * 7;
+        $unixTime = time() + $minExpiresTime;
+        $userData->expires = $unixTime;
+        $userData->refresh_token = "xxxx";
+
+        $userData->User->id = "1000";
+        $userData->User->email = "me@mine.com";
+
+        $userData->User->first_name = "first_name";
+        $userData->User->last_name = "last_name";
+        $userData->User->facebook_id = "1234";
+        $userData->User->mobile_active = "";
+        $userData->User->last_login = "";
+        $userData->User->measurement = "";
+
+        $userData->User->buddy_tracking_enabled = false;
+        $userData->User->buddy_tracking_stealth_mode_enabled = false;
+
+        $userData->UserProfile->id = "1000";
+        $userData->UserProfile->auto_upload_trips = false;
+        $userData->UserProfile->phone_number = "";
+
+        $userData->UserProfile->gender = "";
+        $userData->UserProfile->country_id = "";
+        $userData->UserProfile->city = "";
+        $userData->UserProfile->bio = "";
+
+        $secret = MY_API_SECRET;
+        $expiration = time() + $minExpiresTime;
+		
+        if(!$isRemoteDB)
+        {
+            $issuer = 'localhost';
+        }
+        else
+        {
+            $issuer = $remoteHost;
+        }
+
+        $token = Token::create($userId, $secret, $expiration, $issuer);
+
+        $userData->access_token = $token;
+
+        echo json_encode(get_object_vars($userData));		
+	}		
 	else if($path=='/signup')
     {
 	}
     else if($path=='/download')
     {
 	}
-    else if (
-        //Mobile
-        $path=='/token'
-        //Desktop
-        || $path=='/me'
-        )
-    {
-	}
     else if ($path=='/meetrips')
     {
+        $user_id = validateToken();
+
+        $isMockTrips = false;
+
+        $offset = 0;
+        $limit = 9999;
+        $records = tripdb::getTrips($user_id, $offset, $limit);
+
+        $row = $records->fetch_array();
+        if(!$row)
+        {
+            $isMockTrips = true;
+        }
+
+        if($isMockTrips)
+        {
+            $trip1 = new TripClass();
+            $trips = array($trip1);
+
+            $out = array_values($trips);
+
+            echo json_encode($out);
+        }
+        else
+        {
+            //Output
+            $result = array();
+
+            if($row)
+            {
+                $result[] = CreateTripFromVw($row);
+                while($row = $records->fetch_array()){
+                    $result[] = CreateTripFromVw($row);
+                }
+            }
+
+            $out = array_values($result);
+            echo json_encode($out);
+        }		
 	}		
 }
 ?>
