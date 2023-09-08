@@ -1,13 +1,23 @@
 # api-hud-goggle
 
-This project will describe to the Api for the Hud Goggles
+This project will contain Api for the Hud Goggles, so a server can be setup to host online services:  
+login  
+signup  
+trips  
+buddies  
+...  
 
 ## End points
 
-/connect
+/login
 
 Provides a entry point for the users connect to get a token
 
-/friend/search
+/token  
+/me  
 
-Search for friends
+Entry point for users with token
+
+/metrips
+
+Entry point to obtain trips from and user
