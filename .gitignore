@@ -1,0 +1,10 @@
+*.phpproj
+*.phpproj.user
+*.sln
+/.vs
+
+*.pdf
+
+/inc/config.dev.php
+/inc/config.pre.php
+/inc/config.pro.php
