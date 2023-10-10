@@ -6,7 +6,7 @@ use Symfony\Component\Debug\Exception\DummyException;
 /**
  * Login controller module.
  *
- * This file holds the operations relaten to login, signup, obtaining token.
+ * This file holds the operations related to login, signup, obtaining token.
  *
  * @version 1.0
  * @author recom3

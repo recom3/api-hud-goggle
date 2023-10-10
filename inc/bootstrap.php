@@ -17,6 +17,7 @@ require_once PROJECT_ROOT_PATH . "/db/frienddb.class.php";
 
 require_once PROJECT_ROOT_PATH . "/model/user.class.php";
 require_once PROJECT_ROOT_PATH . "/model/trip.class.php";
+require_once PROJECT_ROOT_PATH . "/model/buddies.class.php";
 
 use ReallySimpleJWT\Token;
 use ReallySimpleJWT\Exception\ValidateException;
