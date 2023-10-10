@@ -18,4 +18,12 @@ buddies
 ### Budies Controller
 
 /userss - Query friends  
+/friend - accept, invite, reject, remove  
+/meefriendsslocationss - get locations of friends  
+/meelocationss - update my locations  
 
+### Trip Controller
+
+/meetripss - get my trips  
+/downloadgpx - download gpx for a trip  
+/metripsupdate - update my trips  
