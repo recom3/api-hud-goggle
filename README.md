@@ -9,15 +9,21 @@ buddies
 
 ## End points
 
-/login
+### Login Controller
 
-Provides a entry point for the users connect to get a token
+/login - Provides a entry point for the users connect to get a token  
+/token - To get a token  
+/signup - To sign up  
 
-/token  
-/me  
+### Budies Controller
 
-Entry point for users with token
+/userss - Query friends  
+/friend - accept, invite, reject, remove  
+/meefriendsslocationss - get locations of friends  
+/meelocationss - update my locations  
 
-/metrips
+### Trip Controller
 
-Entry point to obtain trips from and user
+/meetripss - get my trips  
+/downloadgpx - download gpx for a trip  
+/metripsupdate - update my trips  
