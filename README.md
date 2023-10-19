@@ -27,3 +27,13 @@ buddies
 /meetripss - get my trips  
 /downloadgpx - download gpx for a trip  
 /metripsupdate - update my trips  
+
+### Package Controller
+
+/packages - get available packages for update  
+/packagesupdate - Updates the packages to be downloaded by user (it is used by the web)  
+/packagedownload - Download large packages and apps from the app store  
+/mepackagessupdate - Update all the packages a user have  
+/mepackagessupdatebin - update binary package to server to check  
+
+
