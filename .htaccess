@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteRule ^api/(.*)$ /api.php/$1 [NC,L]
+
+RewriteRule ^index.html$ /web [NC,L]
+RewriteRule ^$ /web [NC,L]
+RewriteRule ^/$ /web [NC,L]

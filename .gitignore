@@ -2,6 +2,7 @@
 *.phpproj.user
 *.sln
 /.vs
+/vendor
 
 *.pdf
 

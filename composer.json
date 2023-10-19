@@ -1,0 +1,8 @@
+{
+    "name": "recom3/recom3_api",
+	"description": "api for recom3",
+	"type": "project",
+    "require": {
+        "rbdwllr/reallysimplejwt": "^3.1"
+    }
+}
