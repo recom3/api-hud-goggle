@@ -36,4 +36,12 @@ buddies
 /mepackagessupdate - Update all the packages a user have  
 /mepackagessupdatebin - update binary package to server to check  
 
+### ❤️ Support Recom3
 
+Recom3 is an independent open-source project dedicated to keeping discontinued Recon Instruments devices alive.  
+
+If you find this project useful and would like to help cover server and infrastructure costs, please consider making a small contribution.  
+
+**Click the ❤️ Sponsor button at the top of this repository** to support Recom3 via PayPal.  
+
+Any contribution is appreciated. Thank you for your support!  
